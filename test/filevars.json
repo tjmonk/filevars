@@ -1,0 +1,6 @@
+{
+    "config" : [
+        { "var" : "/sys/test/info",
+          "file" : "/usr/share/templates/test.tmpl" }
+    ]
+}
