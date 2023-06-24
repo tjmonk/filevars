@@ -7,9 +7,6 @@ project(filevars
     DESCRIPTION "Server to map variables to template files"
 )
 
-find_library( LIB_VARSERVER varserver REQUIRED )
-find_library( LIB_TJSON tjson REQUIRED )
-
 add_executable( ${PROJECT_NAME}
 	src/filevars.c
 )
@@ -21,8 +18,8 @@ target_include_directories( ${PROJECT_NAME}
 target_link_libraries( ${PROJECT_NAME}
 	${CMAKE_THREAD_LIBS_INIT}
 	rt
-	${LIB_VARSERVER}
-    ${LIB_TJSON}
+	varserver
+    tjson
 )
 
 install(TARGETS ${PROJECT_NAME}
