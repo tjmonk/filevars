@@ -26,8 +26,3 @@ install(TARGETS ${PROJECT_NAME}
 	RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
 
-file(GLOB test_files "test/*.tmpl")
-
-install( FILES ${test_files}
-	DESTINATION /usr/share/templates
-)
