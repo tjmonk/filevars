@@ -20,6 +20,14 @@ jobs:
           ./build.sh
 
       - uses: actions/checkout@v4
+        with:
+          repository: tjmonk/libtjson
+
+      - name: Build TJSON library
+        run: |
+          ./build.sh
+
+      - uses: actions/checkout@v4
 
       - name: Build everything
         run: |
