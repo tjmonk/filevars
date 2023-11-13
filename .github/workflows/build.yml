@@ -1,0 +1,26 @@
+name: Linux builds
+
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Prepare environment
+        # change this to test with different toolchains
+        run: sudo apt-get install -y g++-10
+
+      - uses: actions/checkout@v4
+        repository: https://github.com/tjmonk/varserver
+
+      - name: Build VarServer
+        run: |
+          cd varserver
+          ./build.sh
+
+      - uses: actions/checkout@v4
+
+      - name: Build everything
+        run: |
+          ./build.sh
