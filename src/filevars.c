@@ -198,7 +198,10 @@ void main(int argc, char **argv)
         }
 
         /* close the variable server */
-        VARSERVER_Close( state.hVarServer );
+        if ( VARSERVER_Close( state.hVarServer ) == EOK )
+        {
+            state.hVarServer = NULL;
+        }
     }
 }
 
@@ -472,7 +475,10 @@ static void SetupTerminationHandler( void )
 ==============================================================================*/
 static void TerminationHandler( int signum, siginfo_t *info, void *ptr )
 {
-    VARSERVER_Close( state.hVarServer );
+    if ( VARSERVER_Close( state.hVarServer ) == EOK )
+    {
+        state.hVarServer = NULL;
+    }
 
     syslog( LOG_ERR, "Abnormal termination of filevars" );
 
